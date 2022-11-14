@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+    height: 100%;
+    background: #1f1f31;
+}
+
+@font-face {
+    font-family: reenie-beanie;
+    src: url('/fonts/ReenieBeanie-Regular.ttf');
+}
+
+.reenie-beanie {
+    font-family: reenie-beanie;
+}
+
+.fill-teal{
+    fill: #ace8ca;
+}
+
+.fill-pink {
+    fill: #db2b76;
+}
+
+.bg-navy {
+    background-color: #1f1f31;
+}
+
+.bg-pink {
+    background: #db2b76;
+}
+
+.pink {
+    border-color: #db2b76;
+    color: #db2b76;
+}
+
+.text-pink {
+    color: #db2b76;
+}
+
+.hover-pink:hover {
+    background-color: #db2b76;
+    border-color: #db2b76;
+    color: #ffffff;
+}
+
+.hover-teal:hover {
+    background-color: #ace8ca;
+    border-color: #ace8ca;
+    color: #ffffff;
+}
+
+.teal {
+    border-color: #ace8ca;
+    color: #ace8ca;
+}
+
+a.active {
+    color: #db2b76;
+    font-weight: 800;
+}
+
+.texture {
+    position: relative;
+}
+
+.embed-wrapper {
+    max-width: 100%;
+}
+
+.webembed-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.17977528089888%;
+}
+
+iframe.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 0;
+}
