@@ -17,7 +17,7 @@ export default function Home() {
             </div>
 
             <div className="px-4 py-8 text-center flex justify-center">
-                <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-4 space-y-0">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-4 space-y-0">
 
                     <a href="https://www.facebook.com/notaphaseweddingband" title="Facebook" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg py-3 px-8 text-center">Facebook</a>
 
@@ -33,7 +33,7 @@ export default function Home() {
             </div>
 
             <div className="pb-8 flex justify-center mb-5">
-                <div className="w-full lg:w-3/5">
+                <div className="w-full lg:w-3/5 px-8">
                     <div className="embed-wrapper">
                         <div className="webembed-wrapper">
                             <iframe className="video rounded-md" width="100%" height="100%" src="https://www.youtube.com/embed/GQ8CIfJMfYY" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>

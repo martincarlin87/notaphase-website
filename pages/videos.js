@@ -19,7 +19,7 @@ export default function Videos() {
                             </h2>
                         </div>
                         <div className="mt-20 flex justify-center">
-                            <div className="w-3/5">
+                            <div className="w-full lg:w-3/5">
 
                                 <h3 className="mb-4 text-gray-400 text-3xl">
                                     2022 Showreel
