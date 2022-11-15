@@ -20,14 +20,21 @@ async function handleRequest(req, res) {
 
             if (reCaptchaRes?.score > 0.5) {
 
-                sendEmail(req);
+                const emailStatusCode = sendEmail(req);
 
-                res.status(200).json({
-                    status: "success",
-                    message: "Enquiry submitted successfully",
-                });
+                if (emailStatusCode === 200) {
+                    res.status(200).json({
+                        status: "success",
+                        message: "Enquiry submitted successfully",
+                    });
+                } else {
+                    res.status(500).json({
+                        status: "failure",
+                        message: "Email Send Failure",
+                    });
+                }
             } else {
-                res.status(200).json({
+                res.status(500).json({
                     status: "failure",
                     message: "Google ReCaptcha Failure",
                 });
@@ -37,53 +44,50 @@ async function handleRequest(req, res) {
 
 async function sendEmail(req) {
 
-    try {
-
-        const email = await fetch(`${API_BASE_URL}/email/send`, {
-            method: 'POST',
-            body: JSON.stringify({
-                api_key: process.env.SMTP2GO_API_KEY,
-                to: ["Not A Phase <hello@notaphase.band>"],
-                sender: "Not A Phase <hello@notaphase.band>",
-                subject: "📩 New Website Contact Form Submission",
-                text_body: `New website contact form submission from ${req.body.fullname}, their email is: ✉️ ${req.body.email}. Message: ${req.body.message}`,
-                html_body: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-                            <html lang="en">
-                            <head>
-                                <meta charset="utf-8">
-                          
-                                <title>Website Contact Form Submission</title>
-                                <meta name="description" content=">Website Contact Form Submission">
-                                <meta name="author" content="Not A Phase">
-                                <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
-                            </head>
-                            <body>
-                                <div class="container" style="margin-left: 20px;margin-right: 20px;">
-                                    <h3>New website contact form submission from ${req.body.fullname}, their email is: ✉️ ${req.body.email}.</h3>
-                                    <div style="font-size: 16px;">
-                                        <p style="font-weight: bold;">Message:</p>
-                                        <p>${req.body.message}</p>
-                                    </div>
+    await fetch(`${API_BASE_URL}/email/send`, {
+        method: 'POST',
+        body: JSON.stringify({
+            api_key: process.env.SMTP2GO_API_KEY,
+            to: ["Not A Phase <hello@notaphase.band>"],
+            sender: "Not A Phase <hello@notaphase.band>",
+            subject: "📩 New Website Contact Form Submission",
+            text_body: `New website contact form submission from ${req.body.fullname}, their email is: ✉️ ${req.body.email}. Message: ${req.body.message}`,
+            html_body: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+                        <html lang="en">
+                        <head>
+                            <meta charset="utf-8">
+                      
+                            <title>Website Contact Form Submission</title>
+                            <meta name="description" content=">Website Contact Form Submission">
+                            <meta name="author" content="Not A Phase">
+                            <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
+                        </head>
+                        <body>
+                            <div class="container" style="margin-left: 20px;margin-right: 20px;">
+                                <h3>New website contact form submission from ${req.body.fullname}, their email is: ✉️ ${req.body.email}.</h3>
+                                <div style="font-size: 16px;">
+                                    <p style="font-weight: bold;">Message:</p>
+                                    <p>${req.body.message}</p>
                                 </div>
-                            </body>
-                          </html>
-                        `,
-                custom_headers: [
-                    {
-                        "header": "Reply-To",
-                        "value": `${req.body.fullname} <${req.body.email}>`
-                    }
-                ]
-            })
+                            </div>
+                        </body>
+                      </html>
+                    `,
+            custom_headers: [
+                {
+                    "header": "Reply-To",
+                    "value": `${req.body.fullname} <${req.body.email}>`
+                }
+            ]
+        })
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            console.log(res);
+
+            return res.succeeded ? 200 : 500;
         });
 
-        console.log(email);
-
-    } catch (error) {
-        return error.statusCode || 500;
-    }
-
-    return 200;
 }
 
 export default handleRequest;
