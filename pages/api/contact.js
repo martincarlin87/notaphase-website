@@ -4,7 +4,7 @@ sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
 async function handleRequest(req, res) {
     // validate recaptcha
-    fetch("https://www.google.com/recaptcha/api/siteverify", {
+    await fetch("https://www.google.com/recaptcha/api/siteverify", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -13,7 +13,7 @@ async function handleRequest(req, res) {
     })
         .then((reCaptchaRes) => reCaptchaRes.json())
         .then((reCaptchaRes) => {
-            
+
             console.log(
                 reCaptchaRes,
                 "Response from Google reCaptcha verification API"
