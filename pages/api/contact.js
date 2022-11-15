@@ -1,5 +1,5 @@
 
-const SENDGRID_API = 'https://api.sendgrid.com/v3/mail/send'
+const API_BASE_URL = 'https://api.smtp2go.com/v3';
 
 async function handleRequest(req, res) {
     // validate recaptcha
@@ -39,36 +39,15 @@ async function sendEmail(req) {
 
     try {
 
-        await fetch(SENDGRID_API, {
+        const email = await fetch(`${API_BASE_URL}/email/send`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${process.env.SENDGRID_API_KEY}`
-            },
             body: JSON.stringify({
-                personalizations: [
-                    {
-                        to: [
-                            {
-                                email: "hello@notaphase.band",
-                                name: "Not A Phase"
-                            }
-                        ],
-                        subject: '📩 New Website Contact Form Submission'
-                    }
-                ],
-                from: {
-                    email: "hello@notaphase.band",
-                    name: "Not A Phase"
-                },
-                reply_to: {
-                    email: req.body.email,
-                    name: req.body.fullname
-                },
-                content: [
-                    {
-                        type: 'text/html',
-                        value:`<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+                api_key: process.env.SMTP2GO_API_KEY,
+                to: ["Not A Phase <hello@notaphase.band>"],
+                sender: "Not A Phase <hello@notaphase.band>",
+                subject: "📩 New Website Contact Form Submission",
+                text_body: `New website contact form submission from ${req.body.fullname}, their email is: ✉️ ${req.body.email}. Message: ${req.body.message}`,
+                html_body: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                             <html lang="en">
                             <head>
                                 <meta charset="utf-8">
@@ -88,11 +67,17 @@ async function sendEmail(req) {
                                 </div>
                             </body>
                           </html>
-                        `
+                        `,
+                custom_headers: [
+                    {
+                        "header": "Reply-To",
+                        "value": `${req.body.fullname} <${req.body.email}>`
                     }
                 ]
             })
         });
+
+        console.log(email);
 
     } catch (error) {
         return error.statusCode || 500;

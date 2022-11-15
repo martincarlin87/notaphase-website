@@ -142,6 +142,7 @@ export default function ContactUs() {
                                     type="text"
                                     name="fullname"
                                     value={fullname}
+                                    disabled={!buttonEnabled}
                                     onChange={(e) => {
                                         setFullname(e.target.value);
                                     }}
@@ -163,6 +164,7 @@ export default function ContactUs() {
                                     type="email"
                                     name="email"
                                     value={email}
+                                    disabled={!buttonEnabled}
                                     onChange={(e) => {
                                         setEmail(e.target.value);
                                     }}
@@ -183,6 +185,7 @@ export default function ContactUs() {
                                 <textarea
                                     name="message"
                                     value={message}
+                                    disabled={!buttonEnabled}
                                     onChange={(e) => {
                                         setMessage(e.target.value);
                                     }}
