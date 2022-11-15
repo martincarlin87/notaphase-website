@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Layout, {siteTitle} from '../components/layout';
-import Script from "next/script";
 
 export default function Videos() {
     return (

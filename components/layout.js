@@ -47,6 +47,7 @@ export default function Layout({ children }) {
                 src="https://www.googletagmanager.com/gtag/js?id=AW-1004839080"
                 strategy="afterInteractive"
             />
+
             <Script id="google-analytics" strategy="afterInteractive">
                 {`
                     window.dataLayer = window.dataLayer || [];
@@ -59,6 +60,9 @@ export default function Layout({ children }) {
                     gtag('event', 'conversion', {'send_to': 'AW-1004839080/Ro_aCKuwsoAYEKjBkt8D'});
                 `}
             </Script>
+
+            <Script src="https://www.google.com/recaptcha/api.js" strategy="afterInteractive" />
+
 
             <Script id="service-worker" strategy="afterInteractive">
                 {`

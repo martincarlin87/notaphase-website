@@ -1,24 +1,44 @@
 import Head from 'next/head';
 import Layout, {siteTitle} from '../components/layout';
-import Script from "next/script";
+import {useGoogleReCaptcha} from "react-google-recaptcha-v3";
 
-import React, { useState } from "react";
+import React, {useCallback, useState} from "react";
 
 export default function ContactUs() {
+
     // States for contact form fields
     const [fullname, setFullname] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
 
-    //   Form validation state
+    // Form validation state
     const [errors, setErrors] = useState({});
 
-    //   Setting button text on form submission
+    // Setting button text on form submission
     const [buttonText, setButtonText] = useState("Send");
 
     // Setting success or failure messages states
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
     const [showFailureMessage, setShowFailureMessage] = useState(false);
+
+    const {executeRecaptcha} = useGoogleReCaptcha();
+
+    const handleSubmitForm = useCallback((e) => {
+            e.preventDefault();
+
+            if (!executeRecaptcha) {
+                console.log("Execute recaptcha not yet available");
+                return;
+            }
+
+            executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
+                console.log(gReCaptchaToken, "response Google reCaptcha server");
+                handleSubmit(gReCaptchaToken);
+            });
+        },
+        [executeRecaptcha]
+    );
+
 
     // Validation check method
     const handleValidation = () => {
@@ -39,25 +59,26 @@ export default function ContactUs() {
             isValid = false;
         }
 
-        setErrors({ ...tempErrors });
+        setErrors({...tempErrors});
         console.log("errors", errors);
+        console.log(isValid);
+
         return isValid;
     };
 
-    //   Handling form submit
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async (gReCaptchaToken) => {
 
         let isValidForm = handleValidation();
 
         if (isValidForm) {
             setButtonText("Sending");
+
             const res = await fetch("/api/contact", {
                 body: JSON.stringify({
                     email: email,
                     fullname: fullname,
                     message: message,
+                    gRecaptchaToken: gReCaptchaToken,
                 }),
                 headers: {
                     "Content-Type": "application/json",
@@ -65,7 +86,8 @@ export default function ContactUs() {
                 method: "POST",
             });
 
-            const { error } = await res.json();
+            const {error} = await res.json();
+
             if (error) {
                 console.log(error);
                 setShowSuccessMessage(false);
@@ -73,10 +95,12 @@ export default function ContactUs() {
                 setButtonText("Send");
                 return;
             }
+
             setShowSuccessMessage(true);
             setShowFailureMessage(false);
             setButtonText("Send");
         }
+
         console.log(fullname, email, message);
     };
 
@@ -96,44 +120,77 @@ export default function ContactUs() {
                             </h2>
 
                             <p className="mt-4 mb-4 text-gray-400">
-                                Please use the form below to get in touch. You can also email us directly at <span className="text-white">hello@notaphase.band</span>!
+                                Please use the form below to get in touch. You can also email us directly at <span
+                                className="text-white">hello@notaphase.band</span>!
                             </p>
                         </div>
+
                         <div className="mt-20 flex justify-center">
-                            <form onSubmit={handleSubmit} className="rounded-lg shadow-xl flex flex-col px-8 py-8 w-full lg:w-3/5 bg-gray-900">
+                            <form
+                                onSubmit={handleSubmitForm}
+                                className="rounded-lg shadow-xl flex flex-col px-8 py-8 w-full lg:w-3/5 bg-gray-900"
+                            >
+
                                 <h1 className="text-2xl font-bold text-gray-50">Send a message</h1>
 
-                                <label htmlFor="fullname" className="text-gray-50 text-left font-light mt-8 mb-2">
-                                    Full name<span className="text-red-500">*</span>
+                                <label
+                                    htmlFor="fullname"
+                                    className="text-gray-50 text-left font-light mt-8 mb-2"
+                                >
+                                    Name <span className="text-red-500">*</span>
                                 </label>
-                                <input type="text" name="fullname" value={fullname} onChange={(e) => {
-                                    setFullname(e.target.value);
-                                }}
-                                       className="bg-white py-3 pl-4 focus:outline-none rounded-md focus:ring-1 ring-green-500 font-light text-gray-500"/>
+
+                                <input
+                                    type="text"
+                                    name="fullname"
+                                    value={fullname}
+                                    onChange={(e) => {
+                                        setFullname(e.target.value);
+                                    }}
+                                   className="bg-white py-3 pl-4 focus:outline-none rounded-md focus:ring-1 ring-green-500 font-light text-gray-500"
+                                />
 
                                 {errors?.fullname && (
                                     <p className="text-red-500 text-left">Name cannot be empty.</p>
                                 )}
 
-                                <label htmlFor="email" className="text-gray-50 text-left font-light mt-4 mb-2">E-mail<span
-                                    className="text-red-500">*</span></label>
-                                <input type="email" name="email" value={email}
-                                       onChange={(e) => {
-                                           setEmail(e.target.value);
-                                       }}
-                                       className="bg-white py-3 pl-4 focus:outline-none rounded-md focus:ring-1 ring-green-500 font-light text-gray-500"/>
+                                <label
+                                    htmlFor="email"
+                                    className="text-gray-50 text-left font-light mt-4 mb-2"
+                                >
+                                    E-mail <span className="text-red-500">*</span>
+                                </label>
+
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value={email}
+                                    onChange={(e) => {
+                                        setEmail(e.target.value);
+                                    }}
+                                    className="bg-white py-3 pl-4 focus:outline-none rounded-md focus:ring-1 ring-green-500 font-light text-gray-500"
+                                />
+
                                 {errors?.email && (
                                     <p className="text-red-500 text-left">Email cannot be empty.</p>
                                 )}
 
-                                <label htmlFor="message" className="text-gray-50 text-left font-light mt-4 mb-2">
+                                <label
+                                    htmlFor="message"
+                                    className="text-gray-50 text-left font-light mt-4 mb-2"
+                                >
                                     Message <span className="text-red-500">*</span>
                                 </label>
-                                <textarea name="message" value={message}
-                                          onChange={(e) => {
-                                              setMessage(e.target.value);
-                                          }}
-                                          className="bg-white py-3 pl-4 focus:outline-none rounded-md focus:ring-1 ring-green-500 font-light text-gray-500" rows="5"></textarea>
+
+                                <textarea
+                                    name="message"
+                                    value={message}
+                                    onChange={(e) => {
+                                        setMessage(e.target.value);
+                                    }}
+                                    className="bg-white py-3 pl-4 focus:outline-none rounded-md focus:ring-1 ring-green-500 font-light text-gray-500"
+                                    rows="5"></textarea>
+
                                 {errors?.message && (
                                     <p className="text-red-500 text-left">Message body cannot be empty.</p>
                                 )}
@@ -143,19 +200,20 @@ export default function ContactUs() {
                                         className="relative mt-8 inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-lg font-medium rounded-md group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 text-white focus:ring-4 focus:outline-none focus:ring-blue-800">
                                           <span
                                               className="relative px-10 py-2 transition-all ease-in duration-75 bg-navy rounded-md group-hover:bg-opacity-0 group-hover:bg-transparent">
-                                               Send
+                                              {buttonText}
                                           </span>
                                     </button>
                                 </div>
 
                                 <div className="text-left mt-4">
                                     {showSuccessMessage && (
-                                        <p className="text-green-500 font-semibold text-left text-sm my-2">
+                                        <p className="text-green-500 font-semibold text-center text-sm my-2">
                                             Thank you! Your message has been sent. We aim to reply within 24 hours
                                         </p>
                                     )}
+
                                     {showFailureMessage && (
-                                        <p className="text-red-500 text-left">
+                                        <p className="text-red-500 text-center">
                                             Oops! Something went wrong, please try again.
                                         </p>
                                     )}

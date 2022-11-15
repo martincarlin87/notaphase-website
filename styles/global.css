@@ -83,3 +83,7 @@ iframe.video {
     left: 0;
     border: 0;
 }
+
+.grecaptcha-badge {
+    visibility: hidden;
+}
