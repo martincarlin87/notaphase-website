@@ -16,6 +16,7 @@ export default function ContactUs() {
 
     // Setting button text on form submission
     const [buttonText, setButtonText] = useState("Send");
+    const [buttonEnabled, setButtonEnabled] = useState(true);
 
     // Setting success or failure messages states
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -23,24 +24,20 @@ export default function ContactUs() {
 
     const {executeRecaptcha} = useGoogleReCaptcha();
 
-    const handleSubmitForm = useCallback((e) => {
-            e.preventDefault();
+    const handleSubmitForm = (e) => {
+        e.preventDefault();
 
-            if (!executeRecaptcha) {
-                console.log("Execute recaptcha not yet available");
-                return;
-            }
+        if (!executeRecaptcha) {
+            console.log("Execute recaptcha not yet available");
+            return;
+        }
 
-            executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
-                console.log(gReCaptchaToken, "response Google reCaptcha server");
-                handleSubmit(gReCaptchaToken);
-            });
-        },
-        [executeRecaptcha]
-    );
+        executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
+            console.log(gReCaptchaToken, "response Google reCaptcha server");
+            handleSubmit(gReCaptchaToken);
+        });
+    };
 
-
-    // Validation check method
     const handleValidation = () => {
         let tempErrors = {};
         let isValid = true;
@@ -60,18 +57,18 @@ export default function ContactUs() {
         }
 
         setErrors({...tempErrors});
-        console.log("errors", errors);
-        console.log(isValid);
 
         return isValid;
     };
 
     const handleSubmit = async (gReCaptchaToken) => {
 
-        let isValidForm = handleValidation();
+        const isValidForm = handleValidation();
 
         if (isValidForm) {
+
             setButtonText("Sending");
+            setButtonEnabled(false);
 
             const res = await fetch("/api/contact", {
                 body: JSON.stringify({
@@ -93,12 +90,13 @@ export default function ContactUs() {
                 setShowSuccessMessage(false);
                 setShowFailureMessage(true);
                 setButtonText("Send");
+                setButtonEnabled(true);
                 return;
             }
 
             setShowSuccessMessage(true);
             setShowFailureMessage(false);
-            setButtonText("Send");
+            setButtonText("Sent!");
         }
 
         console.log(fullname, email, message);
@@ -151,7 +149,7 @@ export default function ContactUs() {
                                 />
 
                                 {errors?.fullname && (
-                                    <p className="text-red-500 text-left">Name cannot be empty.</p>
+                                    <p className="text-red-500 text-left mt-2">Name cannot be empty.</p>
                                 )}
 
                                 <label
@@ -172,7 +170,7 @@ export default function ContactUs() {
                                 />
 
                                 {errors?.email && (
-                                    <p className="text-red-500 text-left">Email cannot be empty.</p>
+                                    <p className="text-red-500 text-left mt-2">Email cannot be empty.</p>
                                 )}
 
                                 <label
@@ -192,20 +190,20 @@ export default function ContactUs() {
                                     rows="5"></textarea>
 
                                 {errors?.message && (
-                                    <p className="text-red-500 text-left">Message body cannot be empty.</p>
+                                    <p className="text-red-500 text-left mt-2">Message body cannot be empty.</p>
                                 )}
 
                                 <div className="flex flex-row items-center justify-center">
-                                    <button
-                                        className="relative mt-8 inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-lg font-medium rounded-md group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 text-white focus:ring-4 focus:outline-none focus:ring-blue-800">
-                                          <span
-                                              className="relative px-10 py-2 transition-all ease-in duration-75 bg-navy rounded-md group-hover:bg-opacity-0 group-hover:bg-transparent">
-                                              {buttonText}
-                                          </span>
+                                    <button type="submit" disabled={!buttonEnabled} className="relative mt-8 inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-lg font-medium rounded-md group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 text-white focus:ring-4 focus:outline-none focus:ring-blue-800">
+                                        <span
+                                            className="relative px-10 py-2 transition-all ease-in duration-75 bg-navy rounded-md group-hover:bg-opacity-0 group-hover:bg-transparent">
+                                            {buttonText}
+                                        </span>
                                     </button>
                                 </div>
 
                                 <div className="text-left mt-4">
+
                                     {showSuccessMessage && (
                                         <p className="text-green-500 font-semibold text-center text-sm my-2">
                                             Thank you! Your message has been sent. We aim to reply within 24 hours

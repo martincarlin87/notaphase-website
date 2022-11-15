@@ -13,10 +13,12 @@ async function handleRequest(req, res) {
     })
         .then((reCaptchaRes) => reCaptchaRes.json())
         .then((reCaptchaRes) => {
+            
             console.log(
                 reCaptchaRes,
                 "Response from Google reCaptcha verification API"
             );
+
             if (reCaptchaRes?.score > 0.5) {
 
                 sendEmail(req);
