@@ -78,8 +78,8 @@ async function sendEmail(req) {
                                 <meta charset="utf-8">
                           
                                 <title>Website Contact Form Submission</title>
-                                <meta name="description" content="The HTML5 Herald">
-                                <meta name="author" content="SitePoint">
+                                <meta name="description" content=">Website Contact Form Submission">
+                                <meta name="author" content="Not A Phase">
                                 <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
                             </head>
                             <body>
@@ -97,7 +97,6 @@ async function sendEmail(req) {
                 ]
             })
         });
-
 
     } catch (error) {
         return error.statusCode || 500;
