@@ -1,7 +1,3 @@
-import sendgrid from "@sendgrid/mail";
-
-sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
-
 
 const SENDGRID_API = 'https://api.sendgrid.com/v3/mail/send'
 
