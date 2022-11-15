@@ -1,13 +1,16 @@
 import styles from './layout.module.css';
 import Script from "next/script";
 import Head from "next/head";
-import Link from 'next/link';
 import {NavLink} from './navlink';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export const siteTitle = 'Not A Phase';
 
 export default function Layout({ children }) {
+
+    useEffect(() => {
+        document.documentElement.lang = "en-gb";
+    });
 
     const [isOpen, setOpen] = useState(false);
 
