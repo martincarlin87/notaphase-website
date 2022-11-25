@@ -11,7 +11,7 @@ async function handleRequest(req, res) {
         body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${req.body.gRecaptchaToken}`,
     })
         .then((reCaptchaRes) => reCaptchaRes.json())
-        .then((reCaptchaRes) => {
+        .then(async (reCaptchaRes) => {
 
             console.log(
                 reCaptchaRes,
@@ -20,7 +20,7 @@ async function handleRequest(req, res) {
 
             if (reCaptchaRes?.score > 0.5) {
 
-                const emailStatusCode = sendEmail(req);
+                const emailStatusCode = await sendEmail(req);
 
                 if (emailStatusCode === 200) {
                     res.status(200).json({
