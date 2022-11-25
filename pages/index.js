@@ -16,17 +16,17 @@ export default function Home() {
             </div>
 
             <div className="px-4 py-8 text-center flex justify-center">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-4 space-y-0">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-4 space-y-0">
 
-                    <a href="https://www.facebook.com/notaphaseweddingband" title="Facebook" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg py-3 px-8 text-center">Facebook</a>
+                    <a href="https://www.facebook.com/notaphaseweddingband" title="Facebook" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm md:text-lg py-3 px-8 text-center">Facebook</a>
 
-                    <a href="https://www.instagram.com/notaphase_band/" title="Instagram" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg py-3 px-8 text-center">Instagram</a>
+                    <a href="https://www.instagram.com/notaphase_band/" title="Instagram" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm md:text-lg py-3 px-8 text-center">Instagram</a>
 
-                    <a href="https://www.youtube.com/channel/UCedR8k_5dBAvMXFwdsiJe-w" title="YouTube" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg py-3 px-8 text-center">YouTube</a>
+                    <a href="https://www.youtube.com/channel/UCedR8k_5dBAvMXFwdsiJe-w" title="YouTube" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm md:text-lg py-3 px-8 text-center">YouTube</a>
 
-                    <a href="https://open.spotify.com/playlist/6KFdKJ2jXb6o06vZi3L6rQ" title="Repertoire" className="hidden text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg py-3 px-8 text-center">Repertoire</a>
+                    <a href="https://open.spotify.com/playlist/6KFdKJ2jXb6o06vZi3L6rQ" title="Repertoire" className="hidden text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm md:text-lg py-3 px-8 text-center">Repertoire</a>
 
-                    <a href="https://www.coastentertainments.co.uk/band/not-a-phase" title="Book Us on Coast Entertainments" className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg py-3 px-8 text-center">Book Us!</a>
+                    <a href="https://www.coastentertainments.co.uk/band/not-a-phase" title="Book Us on Coast Entertainments" className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm md:text-lg py-3 px-8 text-center">Book Us!</a>
 
                 </div>
             </div>

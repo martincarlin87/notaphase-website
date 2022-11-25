@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Layout, {siteTitle} from '../components/layout';
 import {useGoogleReCaptcha} from "react-google-recaptcha-v3";
 
-import React, {useCallback, useState} from "react";
+import React, {useState} from "react";
 
 export default function ContactUs() {
 
@@ -46,6 +46,7 @@ export default function ContactUs() {
             tempErrors["fullname"] = true;
             isValid = false;
         }
+
         if (email.length <= 0) {
             tempErrors["email"] = true;
             isValid = false;
