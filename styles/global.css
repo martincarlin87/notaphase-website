@@ -4,7 +4,16 @@
 
 html, body {
     height: 100%;
-    background: #1f1f31;
+    background-color: #1f1f31;
+    background-image:
+        radial-gradient(ellipse 90% 60% at -5% -5%, rgba(172, 232, 202, 0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 70% at 105% 105%, rgba(219, 43, 118, 0.07) 0%, transparent 55%);
+    background-attachment: fixed;
+}
+
+::selection {
+    background: rgba(219, 43, 118, 0.4);
+    color: #ffffff;
 }
 
 @font-face {
@@ -16,7 +25,11 @@ html, body {
     font-family: reenie-beanie;
 }
 
-.fill-teal{
+.cormorant {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.fill-teal {
     fill: #ace8ca;
 }
 
@@ -39,6 +52,10 @@ html, body {
 
 .text-pink {
     color: #db2b76;
+}
+
+.text-teal-brand {
+    color: #ace8ca;
 }
 
 .hover-pink:hover {
@@ -86,4 +103,106 @@ iframe.video {
 
 .grecaptcha-badge {
     visibility: hidden;
+}
+
+/* Section headings */
+.section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    color: #ffffff;
+    line-height: 1.1;
+}
+
+/* Brand buttons */
+.btn-brand {
+    background-color: #db2b76;
+    color: #ffffff;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    padding: 0.75rem 2rem;
+    font-size: 0.875rem;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.btn-brand:hover {
+    background-color: #ace8ca;
+    color: #1f1f31;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(172, 232, 202, 0.2);
+}
+
+.btn-brand:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+@media (min-width: 768px) {
+    .btn-brand {
+        font-size: 1rem;
+    }
+}
+
+/* Dark form inputs */
+.input-dark {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border-radius: 0.375rem;
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-size: 1rem;
+}
+
+.input-dark:focus {
+    border-color: #ace8ca;
+    box-shadow: 0 0 0 3px rgba(172, 232, 202, 0.12);
+}
+
+.input-dark::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.input-dark:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* FAQ cards */
+.faq-item {
+    border-left: 2px solid #ace8ca;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 0 0.5rem 0.5rem 0;
+    padding: 1.5rem 1.75rem;
+    text-align: left;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.faq-item:hover {
+    background: rgba(255, 255, 255, 0.055);
+    border-color: #db2b76;
+}
+
+.faq-question {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+    line-height: 1.35;
+}
+
+.faq-answer {
+    color: #9ca3af;
+    font-size: 0.95rem;
+    line-height: 1.75;
 }

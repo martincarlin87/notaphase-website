@@ -21,6 +21,9 @@ export default function Layout({ children }) {
 
     return <div className={styles.container}>
         <Head>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+            <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
             <meta
                 name="charset"
                 content="utf-8"
@@ -45,42 +48,40 @@ export default function Layout({ children }) {
                 name="manifest"
                 content="/manifest.json"
             />
+        </Head>
 
-            <Script
-                src="https://www.googletagmanager.com/gtag/js?id=AW-1004839080"
-                strategy="afterInteractive"
-            />
+        <Script
+            src="https://www.googletagmanager.com/gtag/js?id=AW-1004839080"
+            strategy="afterInteractive"
+        />
 
-            <Script id="google-analytics" strategy="afterInteractive">
-                {`
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    
-                    gtag('config', 'AW-1004839080');
-                    
-                    <!-- Event snippet for Website traffic conversion page -->
-                    gtag('event', 'conversion', {'send_to': 'AW-1004839080/Ro_aCKuwsoAYEKjBkt8D'});
-                `}
-            </Script>
+        <Script id="google-analytics" strategy="afterInteractive">
+            {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
 
-            <Script src="https://www.google.com/recaptcha/api.js" strategy="afterInteractive" />
+                gtag('config', 'AW-1004839080');
 
+                gtag('event', 'conversion', {'send_to': 'AW-1004839080/Ro_aCKuwsoAYEKjBkt8D'});
+            `}
+        </Script>
 
-            <Script id="service-worker" strategy="afterInteractive">
-                {`
-                if ('serviceWorker' in navigator) { // check compatability
-                    navigator.serviceWorker.register('sw.js') // register
+        <Script src="https://www.google.com/recaptcha/api.js" strategy="afterInteractive" />
+
+        <Script id="service-worker" strategy="afterInteractive">
+            {`
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.register('sw.js')
                       .then((res) => {
-                        console.log('Service worker registered!'); // success
+                        console.log('Service worker registered!');
                     })
                   .catch((err) => {
-                    console.log('Registration failed!'); // failure
+                    console.log('Registration failed!');
                   })
                 }
             `}
-            </Script>
-        </Head>
+        </Script>
 
         <div id="fb-root"></div>
 

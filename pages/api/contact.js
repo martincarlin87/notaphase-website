@@ -44,7 +44,7 @@ async function handleRequest(req, res) {
 
 async function sendEmail(req) {
 
-    await fetch(`${API_BASE_URL}/email/send`, {
+    return await fetch(`${API_BASE_URL}/email/send`, {
         method: 'POST',
         body: JSON.stringify({
             api_key: process.env.SMTP2GO_API_KEY,
@@ -85,7 +85,7 @@ async function sendEmail(req) {
         .then((res) => {
             console.log(res);
 
-            return res.succeeded ? 200 : 500;
+            return res.data?.succeeded ? 200 : 500;
         });
 
 }
