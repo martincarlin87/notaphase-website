@@ -15,7 +15,7 @@ export default function Faqs() {
                         These are some of the most commonly asked questions we receive.
                     </p>
                     <p className="mt-3 text-gray-400">
-                        Can&apos;t find the answer you&apos;re looking for? Use the live chat to speak to us via Messenger or feel free to email us at <span className="text-white">hello@notaphase.band</span>.
+                        Can&apos;t find the answer you&apos;re looking for? Use the live chat to speak to us via Messenger or feel free to email us at <span className="text-white"><a href="mailto:hello@notaphase.band">hello@notaphase.band</a></span>.
                     </p>
                 </div>
 
