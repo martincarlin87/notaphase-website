@@ -30,7 +30,7 @@ export default function Repertoire() {
                     </p>
                     <p className="mt-3 text-gray-400">
                         If you have any suggestions or requests, please let us know via Messenger or email us at{' '}
-                        <span className="text-white">hello@notaphase.band</span>.
+                        <span className="text-white"><a href="mailto:hello@notaphase.band">hello@notaphase.band</a></span>.
                     </p>
                 </div>
 
