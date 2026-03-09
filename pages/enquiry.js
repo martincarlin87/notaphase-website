@@ -99,7 +99,7 @@ export default function Enquiry() {
                     className="rounded-xl flex flex-col px-8 py-8"
                     style={{background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)'}}
                 >
-                    <h1 className="cormorant text-2xl font-semibold text-white">Booking Details</h1>
+                    <h1 className="cormorant text-2xl font-semibold text-white">Event Details</h1>
 
                     <label htmlFor="fullname" className="text-gray-400 text-xs font-medium mt-7 mb-2 uppercase tracking-widest">
                         Name <span className="text-pink">*</span>

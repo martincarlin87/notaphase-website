@@ -159,11 +159,18 @@ export default function Layout({ children }) {
                         </li>
                         <li>
                             <NavLink
+                                href="/enquiry"
+                                className="block py-2 pr-4 pl-3 text-gray-400 rounded md:bg-transparent md:p-0">
+                                Availability Enquiry
+                            </NavLink>
+                        </li>                                        
+                        <li>
+                            <NavLink
                                 href="/contact"
                                 className="block py-2 pr-4 pl-3 text-gray-400 rounded md:bg-transparent md:p-0">
                                 Contact Us
                             </NavLink>
-                        </li>
+                        </li>        
                     </ul>
                 </div>
             </div>
