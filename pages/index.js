@@ -17,12 +17,11 @@ export default function Home() {
 
             <div className="px-4 py-8 text-center flex justify-center">
                 <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-x-8 gap-y-4 space-y-0">
-                    <a href="https://www.face
-                    book.com/notaphaseweddingband" title="Facebook" className="btn-brand">Facebook</a>
+                    <a href="https://www.facebook.com/notaphaseweddingband" title="Facebook" className="btn-brand">Facebook</a>
 
                     <a href="https://www.instagram.com/notaphase_band/" title="Instagram" className="btn-brand">Instagram</a>
 
-                    <a href="https://www.youtube.com/channel/UCedR8k_5dBAvMXFwdsiJe-w" title="YouTube" className="btn-brand">YouTube</a>
+                    <a href="https://www.tiktok.com/@not.a.phase.band" title="TikTok" className="btn-brand">YouTube</a>
 
                     <a href="https://open.spotify.com/playlist/6KFdKJ2jXb6o06vZi3L6rQ" title="Repertoire" className="hidden">Repertoire</a>
                 </div>
