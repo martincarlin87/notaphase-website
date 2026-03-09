@@ -95,23 +95,23 @@ export default function Faqs() {
                     <div className="faq-item">
                         <dt className="faq-question">What do clients love most about your performances?</dt>
                         <dd className="faq-answer">
-                            Feedback tells us clients love our high energy performances, and the fact that as a five piece we actually play live — no backing tracks.
+                            Feedback tells us clients love our high energy performances, and the customers feel less like they&apos;ve attended a wedding party and more they&apos;ve been to a gig.
                         </dd>
                     </div>
 
                     <div className="faq-item">
                         <dt className="faq-question">Which artists are you most influenced by?</dt>
                         <dd className="faq-answer">
-                            We play a complete range from the 60s to the present day. Van Morrison gets people going early, we&apos;ll cheese it up with Backstreet Boys, blow the roof off with Blink 182, and bring it up to date with a bit of Lizzo.
+                            We can cover a complete range from the 60s to the present day, but we specialise in the 90&apos;s - 00&apos;s so expect some MCR, Panic and we can even throw in some Slipknot for the hardcore.
                         </dd>
                     </div>
 
                     <div className="faq-item">
                         <dt className="faq-question">Can you provide a ceilidh set?</dt>
                         <dd className="faq-answer">
-                            <p className="mb-3">Who&apos;s up for a Gay Gordons? If a ceilidh is requested we&apos;ll live play a set of the standards and call the dances for your guests, all included in the standard cost.</p>
+                            <p className="mb-3">Who&apos;s up for a Gay Gordons? If a ceilidh is requested we&apos;ll play a set of the standards and call the dances for your guests, all included in the standard cost.</p>
                             <p>
-                                Dances included: Gay Gordon&apos;s, Dashing White Sergeant, Strip The Willow, Canadian Barn Dance, Virginia Reel.
+                                Dances included: Gay Gordon&apos;s, Dashing White Sergeant, Strip The Willow, Canadian Barn Dance.
                             </p>
                         </dd>
                     </div>
@@ -119,8 +119,7 @@ export default function Faqs() {
                     <div className="faq-item">
                         <dt className="faq-question">How much does it cost to book the band?</dt>
                         <dd className="faq-answer">
-                            <p className="mb-3">The base price is <span className="text-white font-medium">£1295</span>, based on standard times of 8pm–12am within the Central Belt.</p>
-                            <p>Get an <span className="text-white font-medium">instant</span> availability and price check at <a href="https://www.coastentertainments.co.uk/band/not-a-phase" target="_blank" className="text-white underline hover:text-gray-300 transition-colors">Coast Entertainments</a>.</p>
+                            <p className="mb-3">Get an availability and price check by emailing us at <span className="text-white"><a href="mailto:hello@notaphase.band">hello@notaphase.band</a></span> or use the Contact Us link at the top of the page.</p>
                         </dd>
                     </div>
                 </dl>
