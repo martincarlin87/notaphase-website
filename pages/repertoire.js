@@ -34,9 +34,9 @@ export default function Repertoire() {
                     </p>
                 </div>
 
-                <div className="flex justify-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
                     <iframe
-                        className="rounded-lg w-full lg:w-4/5"
+                        className="rounded-lg w-full"
                         src="https://open.spotify.com/embed/playlist/5Tdp0QDL7l8N7FIFDI5hus?utm_source=generator&theme=0"
                         width="100%"
                         height="380"
@@ -44,10 +44,9 @@ export default function Repertoire() {
                         allowFullScreen=""
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                         loading="lazy"
-                        style={{ padding: "5px" }}
                     />
                     <iframe
-                        className="rounded-lg w-full lg:w-4/5"
+                        className="rounded-lg w-full"
                         src="https://open.spotify.com/embed/playlist/430St2R2bSa6qZ9us0VPqW?utm_source=generator&theme=0"
                         width="100%"
                         height="380"
@@ -55,7 +54,6 @@ export default function Repertoire() {
                         allowFullScreen=""
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                         loading="lazy"
-                        style={{ padding: "5px" }}
                     />
                 </div>
             </div>
