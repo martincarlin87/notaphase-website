@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
+import YouTubeEmbed from '../components/YouTubeEmbed';
 
 export default function Home() {
     return (
@@ -29,11 +30,15 @@ export default function Home() {
 
             <div className="pb-8 flex justify-center mb-5">
                 <div className="w-full lg:w-3/5 px-8">
-                    <div className="embed-wrapper">
-                        <div className="webembed-wrapper">
-                            <iframe className="video rounded-md" width="100%" height="100%" src="https://www.youtube.com/embed/OTFYITxqpJQ?rel=0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                        </div>
-                    </div>
+                    <h3 className="mb-4 text-teal-brand cormorant text-xl font-semibold">
+                        2026 Showreel
+                    </h3>
+
+                    <YouTubeEmbed
+                    videoId="OTFYITxqpJQ"
+                    title="2026 Showreel"
+                    thumbnail="/images/logo.png"
+                    />
                 </div>
             </div>
 
