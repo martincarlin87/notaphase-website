@@ -21,7 +21,7 @@ export default function Home() {
 
                     <a href="https://www.instagram.com/notaphase_band/" title="Instagram" className="btn-brand">Instagram</a>
 
-                    <a href="https://www.tiktok.com/@not.a.phase.band" title="TikTok" className="btn-brand">YouTube</a>
+                    <a href="https://www.tiktok.com/@not.a.phase.band" title="TikTok" className="btn-brand">TikTok</a>
 
                     <a href="https://open.spotify.com/playlist/6KFdKJ2jXb6o06vZi3L6rQ" title="Repertoire" className="hidden">Repertoire</a>
                 </div>
