@@ -3,7 +3,7 @@ import Layout, {siteTitle} from '../components/layout';
 import {useGoogleReCaptcha} from "react-google-recaptcha-v3";
 import React, {useState} from "react";
 
-export default function ContactUs() {
+export default function Enquiry() {
 
   const [fullname, setFullname] = useState('');
   const [eventdate, setEventdate] = useState('');
@@ -49,7 +49,7 @@ export default function ContactUs() {
             setButtonText("Sending");
             setButtonEnabled(false);
 
-            const res = await fetch("/api/contact", {
+            const res = await fetch("/api/enquiry", {
                 body: JSON.stringify({
                     email,
                     fullname,
@@ -118,7 +118,7 @@ export default function ContactUs() {
                     )}
 
                     <label htmlFor="date" className="text-gray-400 text-xs font-medium mt-7 mb-2 uppercase tracking-widest">
-                        Date
+                        Event Date
                     </label>
                     <input
                         type="date"
@@ -131,7 +131,7 @@ export default function ContactUs() {
                     />
 
                     <label htmlFor="venue" className="text-gray-400 text-xs font-medium mt-7 mb-2 uppercase tracking-widest">
-                        Venue
+                        Venue / Location
                     </label>
                     <input
                         type="text"
@@ -160,7 +160,7 @@ export default function ContactUs() {
                     )}
 
                     <label htmlFor="message" className="text-gray-400 text-xs font-medium mt-5 mb-2 uppercase tracking-widest">
-                        Any Additional Info <span className="text-pink">*</span>
+                        Any Additional Info
                     </label>
                     <textarea
                         name="message"
