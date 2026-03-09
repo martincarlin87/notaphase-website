@@ -5,14 +5,16 @@ import React, {useState} from "react";
 
 export default function ContactUs() {
 
-    const [fullname, setFullname] = useState("");
-    const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("");
-    const [errors, setErrors] = useState({});
-    const [buttonText, setButtonText] = useState("Send");
-    const [buttonEnabled, setButtonEnabled] = useState(true);
-    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-    const [showFailureMessage, setShowFailureMessage] = useState(false);
+  const [fullname, setFullname] = useState('');
+  const [date, setDate] = useState('');
+  const [venue, setVenue] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [errors, setErrors] = useState({});
+  const [buttonText, setButtonText] = useState('Send');
+  const [buttonEnabled, setButtonEnabled] = useState(true);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showFailureMessage, setShowFailureMessage] = useState(false);
 
     const {executeRecaptcha} = useGoogleReCaptcha();
 
@@ -35,7 +37,6 @@ export default function ContactUs() {
 
         if (fullname.length <= 0) { tempErrors["fullname"] = true; isValid = false; }
         if (email.length <= 0) { tempErrors["email"] = true; isValid = false; }
-        if (message.length <= 0) { tempErrors["message"] = true; isValid = false; }
 
         setErrors({...tempErrors});
         return isValid;
@@ -50,9 +51,11 @@ export default function ContactUs() {
 
             const res = await fetch("/api/contact", {
                 body: JSON.stringify({
-                    email: email,
-                    fullname: fullname,
-                    message: message,
+                    email,
+                    fullname,
+                    date,
+                    venue,
+                    message,
                     gRecaptchaToken: gReCaptchaToken,
                 }),
                 headers: {"Content-Type": "application/json"},
@@ -121,6 +124,8 @@ export default function ContactUs() {
                         type="text"
                         name="date"
                         value={date}
+                        disabled={!buttonEnabled}
+                        onChange={(e) => setDate(e.target.value)}
                         className="input-dark"
                         placeholder="Event date (e.g. 31/12/2026)"
                     />
@@ -132,6 +137,8 @@ export default function ContactUs() {
                         type="text"
                         name="venue"
                         value={venue}
+                        disabled={!buttonEnabled}
+                        onChange={(e) => setVenue(e.target.value)}
                         className="input-dark"
                         placeholder="Event venue"
                     />
@@ -158,6 +165,8 @@ export default function ContactUs() {
                     <textarea
                         name="message"
                         value={message}
+                        disabled={!buttonEnabled}
+                        onChange={(e) => setMessage(e.target.value)}
                         className="input-dark"
                         placeholder="Any extra requirements?"
                         rows="5"
