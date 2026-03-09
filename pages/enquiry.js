@@ -6,7 +6,7 @@ import React, {useState} from "react";
 export default function ContactUs() {
 
   const [fullname, setFullname] = useState('');
-  const [date, setDate] = useState('');
+  const [eventdate, setEventdate] = useState('');
   const [venue, setVenue] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -53,7 +53,7 @@ export default function ContactUs() {
                 body: JSON.stringify({
                     email,
                     fullname,
-                    date,
+                    eventdate,
                     venue,
                     message,
                     gRecaptchaToken: gReCaptchaToken,
@@ -121,11 +121,11 @@ export default function ContactUs() {
                         Date
                     </label>
                     <input
-                        type="text"
-                        name="date"
-                        value={date}
+                        type="date"
+                        name="eventdate"
+                        value={eventdate}
                         disabled={!buttonEnabled}
-                        onChange={(e) => setDate(e.target.value)}
+                        onChange={(e) => setEventdate(e.target.value)}
                         className="input-dark"
                         placeholder="Event date (e.g. 31/12/2026)"
                     />
