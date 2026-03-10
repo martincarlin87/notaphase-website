@@ -17,7 +17,7 @@ export default function Home() {
             </div>
 
             <div className="px-4 py-8 text-center flex justify-center">
-                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-x-8 gap-y-4 space-y-0">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-x-8 gap-y-4 mx-auto">
                     <a href="https://www.facebook.com/notaphaseweddingband" title="Facebook" className="btn-brand">Facebook</a>
 
                     <a href="https://www.instagram.com/notaphase_band/" title="Instagram" className="btn-brand">Instagram</a>

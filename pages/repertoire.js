@@ -12,7 +12,7 @@ export default function Repertoire() {
                 <div className="max-w-2xl mx-auto text-center mb-12">
                     <h2 className="section-heading">Repertoire</h2>
                     <p className="mt-4 text-gray-400">
-                        We are a band that specialises in alternative music from the 90's and 00's, however we know parties need something for everyone. You'll see two playlists below, one for the{' '}
+                        We are a band that specialises in alternative music from the 90's and 00's (think Kerrang! vibes), however we know parties need something for everyone. You'll see two playlists below, one for the{' '}
                         <a
                             href="https://open.spotify.com/playlist/5Tdp0QDL7l8N7FIFDI5hus"
                             target="_blank"
